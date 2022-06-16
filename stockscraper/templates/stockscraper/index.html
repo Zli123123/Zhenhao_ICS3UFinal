@@ -1,0 +1,61 @@
+{% extends "stockscraper/layout.html" %}
+{% load static %}
+{% block title %}
+<title>Stockscraper</title>
+<link rel="stylesheet" href="{% static 'stockscraper/styles.css' %}">
+{% endblock %}
+
+{% block body %} 
+
+<div class="flights">
+  <h1>Stock Scraper &#x2192; &nbsp; &nbsp; &nbsp;</h1>
+  <br>
+  <div>
+    <button id="checkhide" class="inputbox" onclick="count()">Save to File</button>
+  </div>
+  <form action="" method="post">
+      {% csrf_token %}
+    <div class="inputbox">
+      <input type="text" name="keyword" required="required" placeholder="key word">
+    </div>
+
+    <div class="inputbox" id="hide" style="display: none;">
+      <input type="text" id="path" name="path" placeholder="">
+    </div>
+    <br>
+  <label for="links">Choose how many links you want scraped:</label> <br>
+  <div class="inputbox">
+    <input type="text" name="numlinks" required="required" placeholder="number of links">
+  </div>
+  <br><br>
+
+    <div class="inputbox">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  <br>
+  <div>
+    <a href="{% url 'users:index' %}"><button class="btn-main">Go Back</button></a>
+  </div>
+</div>
+<script>
+  function check(){
+      if (document.querySelector('#checkhide').innerHTML == 'Do not save to File'){
+          document.querySelector('#checkhide').innerHTML = 'Save to File';
+          document.getElementById('hide').style.display = 'none';
+      }
+      else if (document.querySelector('#checkhide').innerHTML == 'Save to File'){
+          document.querySelector('#checkhide').innerHTML = 'Do not save to File';
+          document.getElementById('hide').style.display = 'block';
+      }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("checkhide").addEventListener("click", check);
+  });
+  
+  </script>
+{% endblock %}
+
+
+        

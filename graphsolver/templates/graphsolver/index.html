@@ -1,0 +1,86 @@
+{% extends "graphsolver/layout.html" %}
+{% block title %}
+{% load static%}
+<title>Graph Solver</title>
+<link rel="stylesheet" href="{% static 'graphsolver/styles.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="flights split left">
+    <form action="" method="post">
+      {% csrf_token %}
+      <div>
+        <button id="checkhide" class="inputbox" onclick="count()">Try a premade maze</button><br>
+      </div>
+
+      <label for="links" id="try" style="display: none;">Choose an example:</label>
+
+      <select name="examples" id="try-option" style="display: none;" for="links">
+        <option value="1">example 1</option>
+        <option value="2">example 2</option>
+        <option value="3">example 3</option>
+        <option value="4">example 4</option>
+      </select>
+      <br>
+      <div class="inputbox">
+        <input type="text" name="stringmaze" required="required" placeholder="XX..RX" id="change1">
+      </div>
+  
+      <br>
+    <label for="links" id="change">Width</label>
+    <div class="inputbox">
+      <input type="number" name="width" required="required" placeholder="" id="change2">
+    </div>
+    <br>
+    <label for="links" id="change">Height</label>
+    <div class="inputbox">
+      <input type="number" name="height" required="required" placeholder="" id="change3">
+    </div>
+
+    <br><br>
+  
+      <div class="inputbox">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+    {% if answer %}
+    <div class="result split right">
+        <h1>Answer:</h1>
+        <p>{{answer}}</p>
+        <br>
+        <br>
+        <h1>What the maze looks like:</h1>
+        {% for d in visual %}
+            <p style="width: url('{{ width }}')px;">{{ d }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <br>
+    <br>
+    <div>
+        <a href="{% url 'users:index' %}"><button class="btn-main">Go Back</button></a>
+    </div>
+</div>
+
+<script>
+  function check(){
+      const input = document.querySelectorAll('#change1, #change2, #change3');
+      if (document.querySelector('#checkhide').innerHTML == 'Try a premade maze'){
+          document.querySelector('#checkhide').innerHTML = 'Enter your own maze';
+          document.getElementById('try').style.display = 'block';
+          document.getElementById('try-option').style.display = 'block';
+          input.removeAttribute('required');
+      }
+      else if (document.querySelector('#checkhide').innerHTML == 'Enter your own maze'){
+          document.querySelector('#checkhide').innerHTML = 'Try a premade maze';
+          document.getElementById('try').style.display = 'none';
+          document.getElementById('try-option').style.display = 'none';
+          input.setAttribute('required', '');
+      }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("checkhide").addEventListener("click", check);
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "users/layout.html" %}
+{% load static %}
+{% block title %}
+<title>User</title>
+<link rel="stylesheet" href="{% static 'users/users.css' %}">
+{% endblock %}
+
+{% block body %}
+<h1 class="center">Welcome, {{request.user.first_name }}</h1>
+<div class="flights">
+    <ul class="flight-list">
+        <li>Username: {{request.user.username}} </li>
+        <li>Email: {{request.user.email}}</li>
+    </ul>
+
+    <a href="{% url 'users:logout' %}" class="center"><button class="btn-main">Log Out</button></a>
+    <a href="{% url 'airport:index' %}" class="center"><button class="btn-main">Airport</button></a>
+    <a href="{% url 'stockscraper:index' %}" class="center"><button class="btn-main">Stockscraper</button></a>
+    <a href="{% url 'graphsolver:index' %}" class="center"><button class="btn-main">Graph Solver</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+:root{
+    --clr-gray: #f0f7f8;
+    --clr-gray-200: #cfd8dc;
+    --radius: 0.2rem;
+}
+body{
+    font-family: "Montserrat";
+    background-color: var(--clr-gray);
+}
+
+.paragraph{
+    text-align: justify;
+    padding: 0px 16rem 0px 16rem;
+    margin: 0px;
+    column-gap: 2px;
+    font-size: 1rem;
+    color: black;
+}
+
+.paragraph-title{
+    font-size: 3rem;
+    font-family: Dongle;
+    column-gap: 2px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
