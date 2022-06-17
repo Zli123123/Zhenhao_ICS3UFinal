@@ -9,18 +9,28 @@
 <div class="flights split left">
     <form action="" method="post">
       {% csrf_token %}
-      <div>
-        <button id="checkhide" class="inputbox" onclick="count()">Try a premade maze</button><br>
-      </div>
+      <h1>Try a Premade Maze</h1>
+      <br>
 
-      <label for="links" id="try" style="display: none;">Choose an example:</label>
+      <label for="premaze" id="try">Choose an example:</label>
 
-      <select name="examples" id="try-option" style="display: none;" for="links">
-        <option value="1">example 1</option>
-        <option value="2">example 2</option>
-        <option value="3">example 3</option>
-        <option value="4">example 4</option>
+      <select name="examples" id="try-option" for="links">
+        <option value="1" id="1">example 1</option>
+        <option value="2" id="2">example 2</option>
+        <option value="3" id="3">example 3</option>
+        <option value="4" id="4">example 4</option>
       </select>
+      <br>
+      <br>
+      <button id="submit-premaze" id="try2">Submit premaze</button>
+      <br>
+    </form>
+    <br>
+
+    <hr>
+    <form action="" method="post">
+      {% csrf_token %}
+      <h1>Enter Your Own Maze</h1>
       <br>
       <div class="inputbox">
         <input type="text" name="stringmaze" required="required" placeholder="XX..RX" id="change1">
@@ -62,25 +72,37 @@
     </div>
 </div>
 
+<!---->
 <script>
   function check(){
-      const input = document.querySelectorAll('#change1, #change2, #change3');
+      const input = document.querySelectorAll('#change1, #change2, #change3'); 
       if (document.querySelector('#checkhide').innerHTML == 'Try a premade maze'){
           document.querySelector('#checkhide').innerHTML = 'Enter your own maze';
           document.getElementById('try').style.display = 'block';
+          document.getElementById('try2').style.display = 'block';
           document.getElementById('try-option').style.display = 'block';
-          input.removeAttribute('required');
       }
       else if (document.querySelector('#checkhide').innerHTML == 'Enter your own maze'){
           document.querySelector('#checkhide').innerHTML = 'Try a premade maze';
           document.getElementById('try').style.display = 'none';
+          document.getElementById('try2').style.display = 'none';
           document.getElementById('try-option').style.display = 'none';
-          input.setAttribute('required', '');
       }
+
   }
+    function premaze(){
+      if (document.getElementById('1') == true) {
+        document.querySelector('#change1').innerHTML = 'EXRX...XXX......XX.XX..XR.XX...X..XR....';
+        document.querySelector('#change2').innerHTML = 4;
+        document.querySelector('#change3').innerHTML = 10;
+      }
+    }
+  
   
   document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("checkhide").addEventListener("click", check);
+    //document.getElementById("checkhide").addEventListener("click", check);
+    document.getElementById("submit-premaze").addEventListener("click", premaze);
+
   });
 </script>
 {% endblock %}

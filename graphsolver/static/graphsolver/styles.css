@@ -89,7 +89,7 @@
   margin-bottom: -5%;
 }
 
-/* from W3schools */
+/* from W3schools some of the code below which allows a split screen*/
 
 /* Split the screen in half */
 .split {
@@ -103,6 +103,7 @@
 /* Control the left side */
 .left {
   left: 12%;
+  margin-top: -20px;
 }
 
 /* Control the right side */

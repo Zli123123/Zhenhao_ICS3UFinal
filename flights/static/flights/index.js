@@ -1,4 +1,6 @@
 // clock code copied from a website. I tried to make a clock using datetime + setInterval in 3 different ways but I gave up after repeated errors. There's an easier method via javascript modules
+
+//https://flexiple.com/javascript-clock/
 let clock = () => {
     let date = new Date();
     let hrs = date.getHours();
