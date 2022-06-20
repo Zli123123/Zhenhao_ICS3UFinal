@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 
+'''
+Checks for user authentication using request.POST and Django's built in authenticate function
+'''
 
 # Create your views here.
 def index(request):

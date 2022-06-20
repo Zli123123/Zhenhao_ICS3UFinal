@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from graphsolver import solver 
 # Create your views here.
+
+'''
+Views page for graphsolver
+There is an index view that responds to an html form with POST method
+Runs the graphsolver classes and functions with the form inputs as parameters
+'''
+
 def index(request):
     if request.method == "POST":
         if 'examples' in request.POST:

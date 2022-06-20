@@ -1,3 +1,8 @@
+'''
+This porgram scrapes data from html tags online and can store them in a file.
+'''
+
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import nltk
@@ -59,14 +64,14 @@ def scrape(links, save):
             words = text_to_split.split()
             #print(words)
             for k in range(len(words)):
-                if words[k] in goodstuff:
+                if words[k] in goodstuff: #checks to see if the words in the spereated sentences fall under good news
                     #print(a_list[i])
                     if "sign up" in a_list or "Sign up" in a_list or "Log in" in a_list or "log in" in a_list:
                             #print("SIGN UP")
                             continue
                     else:
                         content1.append(a_list[i])
-                if words[k] in badstuff:
+                if words[k] in badstuff: #checks to see if the words in the spereated sentences fall under bad  news
                     #print(a_list[i])
                     if "sign up" in a_list or "Sign up" in a_list or "Log in" in a_list or "log in" in a_list:
                             #print("SIGN UP")
@@ -76,12 +81,13 @@ def scrape(links, save):
         
         #print("_________________________________")
         for i in range(len(a_list)):
-            if len(re.findall(r"(\+*|\-*)(\d+\.*\d*\%)", a_list[i])) != 0:
+            if len(re.findall(r"(\+*|\-*)(\d+\.*\d*\%)", a_list[i])) != 0: #regex for statistics (any number + a percent sign)
                 #print(a_list[i])
                 content3.append(a_list[i])
         website = [content1, content2, content3]
         report.append(website)
     
+    #organizes the scraped data
     data = []
     website_num = 0
     for website in report:
@@ -99,7 +105,7 @@ def scrape(links, save):
         data.append(f"\n\n")
     
 
-
+    #saves the scraped data into the specified path from views
     if save != '':
         to_open = save + 'stock_news.txt'
         dataFILE = open(to_open, 'w')

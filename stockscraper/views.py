@@ -6,7 +6,10 @@ from googlesearch import search
 from stockscraper import scraper
 # to search 
 
-
+'''
+views for the stockscraper program
+Uses request.POST to extract form data from the html side
+'''
 
 def index(request):
     if request.method == "POST":

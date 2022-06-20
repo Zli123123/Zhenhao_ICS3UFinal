@@ -1,4 +1,16 @@
+'''
+The logic behind solving the graph
+This program employs BFS.
 
+It first creates a graph from a specified maze string, and a width and height. 
+The program then finds each node's type (., X, E, R), and their connections (up, down, right, left unless those nodes are type X)
+The program chooses one robot and sets its distance to 0, and predecessor to None. 
+It then goes through the robot's connections, setting each next connection a higher distance, and its previous node as the predecessor
+The robot appends all final distances to a list, and sorts it. 
+Next, the farthest robot is run with the same BFS program. Its distance (RLLUUUR for example) is then applied
+to all other robots. 
+The program repeats. 
+'''
 
 #this will be pretty hard
 #steps to add
@@ -72,7 +84,7 @@ class BFS:
         self.height = height
         self.width = width      
     
-    def Makevisual(self):
+    def Makevisual(self): #akes a visual 
         x = 1
         y = 1
         visual = ''
@@ -89,7 +101,7 @@ class BFS:
         print(visual)
         print('\n')
             
-    def Makevisual_row(self):
+    def Makevisual_row(self): #makes the visual that will be showcased on the html side
         x = 1
         y = 1
         visual = []
@@ -110,8 +122,8 @@ class BFS:
         #print('\n')
         return visual
         
-    def Makegrid(self):
-        #[x, y, type (X, ., R, E)]
+    def Makegrid(self): #makes the first type of graph 
+        #[x, y, type (X, ., R, E)] has x and y coordinates, type 
         details = []
         x = 1
         y = 1
@@ -182,7 +194,7 @@ class BFS:
             #print(details2)
         print(self.singleCordList)
     
-    def Compile_robot_order(self):
+    def Compile_robot_order(self): #finds the farthest robot 
         #self.sources
         distances = []
         unsolvable = False 
@@ -268,15 +280,15 @@ class BFS:
             connections = node_list[2]
             node_type = node_list[1]
             
-            for node in connections:
+            for node in connections: #goes through all of the connections
                 check_list = singleCordList[node-1]
                 check_type = check_list[1]
                 location = check_list[0]
                 #[location, node_type (X, E, ., R), connections, pred, distance]
-                if check_list[3] == None and check_type != "X":
+                if check_list[3] == None and check_type != "X": #checks if the connection is a wall or not
                     singleCordList[node-1][3] = pred
                     singleCordList[node-1][4] = distance
-                    if check_list[1] == "E":
+                    if check_list[1] == "E": #if type is E, that means the entrance is found
                         print("found entrance!")
                         EntranceFound = True
                         break
@@ -425,7 +437,7 @@ class BFS:
         
         return self.sources
         
-    def revert(self):
+    def revert(self): #reverts the maze graph into a string
         string_maze = ''
         for node_list in self.singleCordList:
             string_maze += node_list[1]

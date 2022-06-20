@@ -13,6 +13,12 @@ now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 
 # Create your views here.
+
+'''
+Views for the app 'flights' is created here. There is an index page that returns an flights/index.html with 3 
+inputs (flight objects, the date, the time). Also, there is a flight views that showcases the passengers to the 
+specific flight. Finally, there is a view that allows you to book or delete flights. 
+'''
 def index(request):
     today = date.today()
 
