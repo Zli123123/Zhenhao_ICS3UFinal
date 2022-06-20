@@ -1,10 +1,10 @@
 ICS final project
 
 This program encompasses three things that I've learned this year: Django, webscraping, and graph theory. 
-The Django program is an airpot that employs user authentication, models, and POST methods. 
+The Django program is an airport that employs user authentication, models, and POST methods. 
 My webscraper scrapes html tags from a google search query, then seperates the scraped text into three 
 distinct parts - good news concerning the stock, bad news and statistics (using regular expression). 
-Finally, my graph theory problem uses classes, as well as the BFS algorithm to solve a CMIMC contest problem.
+Finally, my graphsolver uses classes, as well as the BFS algorithm to solve a CMIMC contest problem.
 
 To use the program
 Install git if you haven't already
