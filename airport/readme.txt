@@ -53,3 +53,12 @@ http://127.0.0.1:8000/users/login
 
 Already logged in:
 http://127.0.0.1:8000/users
+
+Support:
+Please contact zli10@ocdsb.ca for support or feature requests.
+
+Languages used:
+- Python (Django framework)
+- HTML
+- CSS
+- Javascript
